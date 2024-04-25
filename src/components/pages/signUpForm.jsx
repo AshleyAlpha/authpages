@@ -14,13 +14,13 @@ const SignUpForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form submission logic here
+   
     console.log('Form submitted:', formData);
   };
 
   return (
     <div className="bg-green-300 border-red-700 min-h-screen flex justify-center items-center p-36">
-      <div className="bg-yellow-300 p-8 rounded-lg shadow-md">
+      <div className="bg-yellow-100 p-8 rounded-lg shadow-md">
         <h2 className="text-3xl font-italic mb-4 text-red-500">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -60,7 +60,7 @@ const SignUpForm = () => {
             />
           </div>
           <button
-            className="bg-blue-100 hover:bg-blue-500 text-blue-700 font-italic py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-blue-300 font-italic py-2 px-4 rounded-lg w-full"
             type="submit"
           >
             Sign Up

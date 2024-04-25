@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from "react-router-dom";
+
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +23,7 @@ function LoginForm() {
   return (
     <div className="bg-green-300 border border-red-700  flex flex-col items-center justify-center p-36">
       <h2 className="text-center text-xl text-blue-600 mb-4">Logo Here</h2>
-      <div className="bg-yellow-200 border border-blue-700 max-w-sm rounded p-8 flex flex-col items-center">
+      <div className="bg-yellow-100 border border-blue-700 max-w-sm rounded p-8 flex flex-col items-center">
         <h2 className="text-center text-xl text-red-600 mb-4">Sign In</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
