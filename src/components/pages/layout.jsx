@@ -9,7 +9,7 @@ const Layout = () => {
         <Header/>
      <div className="flex">
         <SideBar/>
-        <div className="flex  w-[100%] h-[100vh] bg-[#b4b955] rounded-lg border border-[#828181]">
+        <div className="flex  w-[100%] h-[100vh] bg-yellow-100 rounded-lg border border-[#828181]">
         <Outlet/>
         </div>
      </div>
