@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  // State variables for form data and errors
   const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+  const [errors, setErrors] = useState({
     username: '',
     email: '',
     password: '',
@@ -12,13 +19,47 @@ const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Clear error message when user starts typing in the field
+    setErrors({ ...errors, [name]: '' });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+
+    // Basic validation to check if all fields are filled
+    if (!formData.username || !formData.email || !formData.password) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    // Additional validation
+    if (!isValidEmail(formData.email)) {
+      setErrors({ ...errors, email: 'Please enter a valid email address.' });
+      return;
+    }
+
+    if (!isValidPassword(formData.password)) {
+      setErrors({ ...errors, password: 'Your password is not strong.' });
+      return;
+    }
+
     console.log('Form submitted:', formData);
     navigate(`/home`);
+  };
+
+  // Function to check email format
+  const isValidEmail = (email) => {
+    // Simple email format check using regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Function to check password strength
+  const isValidPassword = (password) => {
+    // Password must be at least 8 characters long and contain at least one number
+    const passwordRegex = /^(?=.*[0-9]).{8,}$/;
+    return passwordRegex.test(password);
   };
 
   return (
@@ -49,6 +90,7 @@ const navigate = useNavigate();
               placeholder="Email"
               required
             />
+            {errors.email && <p className="text-red-500">{errors.email}</p>}
           </div>
           <div className="mb-4">
             <input
@@ -61,6 +103,7 @@ const navigate = useNavigate();
               placeholder="Password"
               required
             />
+            {errors.password && <p className="text-red-500">{errors.password}</p>}
           </div>
           <button
             className="bg-blue-500 hover:bg-blue-700 text-blue-300 font-italic py-2 px-4 rounded-lg w-full"

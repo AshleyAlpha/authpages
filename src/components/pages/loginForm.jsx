@@ -15,7 +15,7 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you can handle form submission logic, such as sending data to a server
+  
     console.log('Username:', username);
     console.log('Password:', password);
   };
@@ -55,6 +55,14 @@ function LoginForm() {
           </div>
         </form>
         <p className="mt-4 text-blue-500">Don't have an account?</p> <Link to="/signUpForm"><p className="text-red-500">Sign up here</p></Link>
+        <p className="mt-4 text-blue-500">
+            Forgot password?
+              <Link to="/resetPwd" className="text-red-400">Reset it</Link>
+            </p>
+            <p className="text-center  text-blue-500">
+              Update password
+              <Link to ="/updatepwd"className="text-red-400"> Update</Link>
+              </p>
       </div>
     </div>
   );
